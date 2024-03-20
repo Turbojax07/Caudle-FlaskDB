@@ -5,6 +5,7 @@ import json
 conn = None
 
 def getConnection():
+    global conn
     # If the connection is not defined, then this function defines it
     if (conn is None) or (not conn.closed is 0):
         # Getting json file
