@@ -1,9 +1,53 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        
-    </head>
-    <body>
-        
-    </body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}
+Index
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="/static/index.css">
+    <script src="/static/index.js"></script>
+{% endblock %}
+
+{% block content %}
+    <h4>Current Departments</h4>
+    <table border="2px" cellspacing="0px">
+        <thead>
+            <tr>
+                <th>Dept No</th>
+                <th>Dept Name</th>
+                <th>Location</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+
+        <tbody id="deptTable">
+            {% for deptEntry in deptInfo %}
+                <tr>
+                    <td id="{{ deptEntry[0] }}DeptNo">{{ deptEntry[0] }}</td>
+                    <td id="{{ deptEntry[0] }}DeptName">{{ deptEntry[1] }}</td>
+                    <td id="{{ deptEntry[0] }}Location">{{ deptEntry[2] }}</td>
+                    <td><img src="/static/img/pencil.png" onclick="editEntry({{ deptEntry[0] }})" alt="Edit Button"></td>
+                    <td><img src="/static/img/trash.png" onclick="deleteEntry({{ deptEntry[0] }})" alt="Delete Button"></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div id="bgCover">
+        <table border="2px" cellspacing="0px" id="editBox">
+            <tr>
+                <th>Dept No</th>
+                <th>Dept Name</th>
+                <th>Location</th>
+                <th>Save</th>
+            </tr>
+            <tr>
+                <td><input type="text" id="eDeptNo" value=""></td>
+                <td><input type="text" id="eDeptName" value=""></td>
+                <td><input type="text" id="eLocation" value=""></td>
+                <td><img src="/static/img/disk.png" onclick="exitEdit()" alt="Save Button"></td>
+            </tr>
+        </table>
+    </div>
+{% endblock %}

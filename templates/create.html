@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Edit Departments
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="/static/create.css">
+{% endblock %}
+
+{% block content %}
+    <h4>Create Department</h4>
+    <form onsubmit="createEntry()">
+        <input type="text" id="cDeptNo" value="">
+        <input type="text" id="cDeptName" value="">
+        <input type="text" id="cLocation" value="">
+        <input type="submit">
+    </form>
+{% endblock %}
